@@ -1,4 +1,4 @@
-Projet API REST avec Flask
+Projet API REST avec Fast
 
 ## Prérequis
 
