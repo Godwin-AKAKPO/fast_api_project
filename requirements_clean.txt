@@ -1,6 +1,0 @@
-fastapi
-uvicorn
-alembic
-sqlalchemy
-python-dotenv
-pymysql

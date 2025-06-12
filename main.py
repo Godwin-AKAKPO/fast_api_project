@@ -1,12 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
-from routes import hello
-from database import engine
-from routes import tasks
+from routes import hello, tasks, auth_route
+from database import engine, Base
+
+# Créer les tables si elles n'existent pas
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="API")
 
+app.include_router(auth_route.router, prefix = '/auth', tags=["Authentification"])
 
 @app.get("/")
 def read_root():
@@ -22,12 +25,10 @@ def test_connection():
 
 if __name__ == "__main__":
     test_connection()
+    Base.metadata.create_all(bind=engine)
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
 
 
 app.include_router(tasks.router, prefix="/tasks", tags=["Tasks"])
-
-
-
 app.include_router(hello.router, prefix="/hello", tags=["hello"])
