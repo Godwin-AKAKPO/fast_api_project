@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from routes import hello
 from database import engine
+from routes import tasks
 
 app = FastAPI(title="API")
 
@@ -23,6 +24,10 @@ if __name__ == "__main__":
     test_connection()
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+
+
+app.include_router(tasks.router, prefix="/tasks", tags=["Tasks"])
+
 
 
 app.include_router(hello.router, prefix="/hello", tags=["hello"])
