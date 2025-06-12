@@ -30,7 +30,7 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.post("login", response_model=Token)
+@router.post("/login", response_model=Token)
 def login(user: UserLogin, db: Session = Depends(get_db)):
     # On cherche l'utilisateur
     db_user = db.query(User).filter(User.username == user.username).first()
