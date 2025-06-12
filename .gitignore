@@ -1,8 +1,7 @@
-# Environnements
+#Environnement virtuel
+apienv     
+
+#fichier de connexion de DB
 .env
-# Environnements virtuels
-env/
-venv/
-ENV/
-.venv/
-apienv  
+
+__pycache__
