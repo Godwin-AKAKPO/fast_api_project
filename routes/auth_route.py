@@ -5,7 +5,7 @@ from schemas import UserCreate, UserLogin, Token
 from database import get_db
 from auth import (verify_password, get_password_hash, create_access_token, get_current_user)
 
-router = APIRouter(tags=["Authentication"])
+router = APIRouter(tags=["Authentification"])
 
 @router.post("/register", response_model=Token)
 def register(user: UserCreate, db: Session = Depends(get_db)):
