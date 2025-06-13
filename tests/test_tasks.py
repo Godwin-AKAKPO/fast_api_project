@@ -26,8 +26,8 @@ client = TestClient(app)
 
 # Données de connexion pour authentification
 login_data = {
-    "username": "Ariri",
-    "password": "1234"
+    "username": "username", # Remplacer par un nom d'un utilisateur existant déjà dans la base de données.
+    "password": "password"  # Remplacer par le mot de passe de l'utilisateur en question.
 }
 
 # Authentification et récupération du token d'accès JWT
@@ -86,7 +86,7 @@ def test_get_task_by_id():
             "description": "Juste pour le test",
             "status": "todo",
             "due_date": "2025-06-20",
-            "owner_id": 1
+            "owner_id": 1   # Assurez-vous que l'ID de l'utilisateur qui a été connecté est bel et bien 1 dans la base de données sinon le remplacer
         },
         headers=auth_headers
     )
@@ -112,7 +112,7 @@ def test_update_task():
             "description": "Ancienne description",
             "status": "todo",
             "due_date": "2025-06-21",
-            "owner_id": 1
+            "owner_id": 1   # Assurez-vous que l'ID de l'utilisateur qui a été connecté est bel et bien 1 dans la base de données sinon le remplacer
         },
         headers=auth_headers
     )
@@ -125,7 +125,7 @@ def test_update_task():
             "description": "Description mise à jour",
             "status": "in_progress",
             "due_date": "2025-06-30",
-            "owner_id": 1
+            "owner_id": 1   # Assurez-vous que l'ID de l'utilisateur qui a été connecté est bel et bien 1 dans la base de données sinon le remplacer
         },
         headers=auth_headers
     )
